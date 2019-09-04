@@ -6,17 +6,16 @@ res.raise_for_status()
 soup = bs4.BeautifulSoup(res.text, "html.parser")
 
 # Get all tables
-tables = soup.findChildren('table')
+statBlocks = soup.findAll("article", {"class": "StatBlock"})
 
 # This season
-thisSeasonAverages = tables[0]
-rows = thisSeasonAverages.findChildren('tr')
+thisSeasonAverages = statBlocks[0]
+values = thisSeasonAverages.findChildren("div", {"class": "StatBlockInner__Value"})
 
 # Loop throw first row
-cells = rows[0].findChildren('td')
 stats = []
 for i in range(3):
-    value = float(cells[i].string)
+    value = float(values[i].string)
     stats.append(value)
 
 shelf = shelve.open('stats')
