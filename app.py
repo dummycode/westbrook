@@ -2,6 +2,7 @@ import os
 from flask import Flask, jsonify, request, redirect, url_for
 
 from stats import getStats, isAveragingTripleDouble
+from updateStats import updateStats
 
 app = Flask(__name__)
 
@@ -19,6 +20,15 @@ def home():
         "stats": getStats(),
         "answer": isAveragingTripleDouble()
     })
+
+@app.route('/update', methods=["POST"])
+def update():
+    updateStats()
+    return jsonify({
+        "stats": getStats(),
+        "answer": isAveragingTripleDouble()
+    })
+
 
 @app.after_request
 def add_header(response):
