@@ -19,8 +19,13 @@ def updateStats():
         value = float(values[i].string)
         stats.append(value)
 
-    shelf = shelve.open('stats')
+    shelf = shelve.open('stats', flag='c')
+
     shelf['points'] = stats[0]
     shelf['assists'] = stats[1]
     shelf['rebounds'] = stats[2]
+
     shelf.close()
+
+if __name__ == "__main__":
+    updateStats()

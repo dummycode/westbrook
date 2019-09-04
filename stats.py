@@ -1,7 +1,7 @@
 import shelve
 
 def getStats():
-    shelf = shelve.open('stats')
+    shelf = shelve.open('stats', flag='r')
 
     stats = [shelf['points'], shelf['assists'], shelf['rebounds']]
 
