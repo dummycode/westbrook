@@ -2,7 +2,12 @@ import shelve
 
 def getStats():
     shelf = shelve.open('stats')
-    return [shelf['points'], shelf['assists'], shelf['rebounds']];
+
+    stats = [shelf['points'], shelf['assists'], shelf['rebounds']]
+
+    shelf.close()
+
+    return stats;
 
 def isAveragingTripleDouble():
     return True

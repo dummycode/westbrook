@@ -15,9 +15,8 @@ app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'my_secret_key')
 @app.route('/')
 def home():
     """Is Westbrook averaging a triple double?"""
-    stats = getStats()
     return jsonify({
-        "stats": stats,
+        "stats": getStats(),
         "answer": isAveragingTripleDouble()
     })
 
