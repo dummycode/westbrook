@@ -10,7 +10,6 @@ def getStats():
     return stats;
 
 def isAveragingTripleDouble():
-    return True
     stats = getStats()
     for stat in stats:
         if (int(float(stat)) <  10):
