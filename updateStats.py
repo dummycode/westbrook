@@ -7,7 +7,7 @@ def updateStats():
     soup = bs4.BeautifulSoup(res.text, "html.parser")
 
     # Get all tables
-    statBlocks = soup.findAll("article", {"class": "StatBlock"})
+    statBlocks = soup.findAll("aside", {"class": "StatBlock"})
 
     # This season
     thisSeasonAverages = statBlocks[0]
